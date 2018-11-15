@@ -13,6 +13,7 @@ using std::endl;
  * 时间复杂度：o(n²)
  * 空间复杂度：o(1)
  * 伪代码：
+ * INSERTION-SORT(A)
  * for j = 2 to A.length
  *     key = A[j]
  *     //Insert A[j] into the sorted sequence A[1..j-1]
@@ -35,14 +36,13 @@ int main(){
 void sort(int A[],int length){
     //j是待排序列最小标号
     for (int j = 1; j < length; ++j) {
-        int key = A[j]; // 获得将要插入的值
+        int key = A[j]; // 获得将要插入的值，方便插入
         int i = j -1; //从已排序序列最后一位开始比较
         while ( i>=0 && A[i] > key){
-            int temp = A[i+1];
-            A[i+1] = A[i];
-            A[i] = temp;
+            A[i+1] = A[i];//直接右移
             i = i - 1;
         }
+        A[i+1] = key;
     }
 }
 
